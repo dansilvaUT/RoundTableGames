@@ -1,6 +1,6 @@
 import React from 'react';
 import colors from '../../assets/colors/colors';
-import landing from '../assets/app/landing/landing.jpg';
+import landing from '../../assets/app/landing/landing.jpg';
 import {
     StyleSheet,
     Text,
@@ -14,7 +14,8 @@ const Landing = () => {
         <ImageBackground source={landing} style={styles.landing}>
             <View style={styles.landingMain}>
                 <Text style={styles.landingText}>RoundTable Reviews</Text>
-                <View>
+                <Text style={styles.secondText}>Love it, hate it, gotta have it...Let the world know!</Text>
+                <View style={styles.btnContainer}>
                     <TouchableOpacity style={styles.loginBtn}>
                         <Text style={styles.btnText}>Login</Text>
                     </TouchableOpacity>
@@ -29,7 +30,8 @@ const Landing = () => {
 
 const styles = StyleSheet.create({
     landing: {
-        flex: 1
+        flex: 1,
+        justifyContent: 'flex-end'
     },
     landingMain: {
         flex: 1,
@@ -40,16 +42,24 @@ const styles = StyleSheet.create({
         fontSize: 40,
         color: colors.white
     },
+    secondText: {
+        fontSize: 12,
+        color: colors.white,
+        fontStyle: 'italic',
+        fontWeight: 'bold'
+    },
     btnContainer: {
-        flex: 1
+        width: '80%'
     },
     loginBtn: {
         backgroundColor: colors.green,
-        borderRadius: 5
+        borderRadius: 5,
+        margin: 5,
     },
     signUpBtn: {
         backgroundColor: colors.blue,
-        borderRadius: 5
+        borderRadius: 5,
+        margin: 5
     },
     btnText: {
         textAlign: 'center',
