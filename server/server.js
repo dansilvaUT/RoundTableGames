@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express'),
     session = require('express-session'),
     massive = require('massive'),
+    authCtlr = require('./controllers/auth/authController'),
     { PORT, SESSION_SECRET, CONNECTION_STRING } = process.env,
     app = express();
 
@@ -22,6 +23,13 @@ massive({
     app.set('db', db);
     console.log('RoundTableReview DB connected');
 }).catch(err => console.log(`DB Error ${err.message}`));
+
+//Endpoints
+
+//Auth
+app.post('/api/register', authCtlr.register);
+//User
+
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
