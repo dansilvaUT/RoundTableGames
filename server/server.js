@@ -28,6 +28,9 @@ massive({
 
 //Auth
 app.post('/api/register', authCtlr.register);
+app.get('/api/login', authCtlr.login);
+app.get('/api/auth/me', authCtlr.getUser);
+app.get('/api/logout', authCtlr.logout);
 //User
 
 
