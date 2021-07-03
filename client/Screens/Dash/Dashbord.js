@@ -9,6 +9,9 @@ const Dashboard = () => {
     return (
         <View style={styles.container}>
             <Text>Dashboard</Text>
+            <View>
+                {/* GAMES RENDERED HERE PREVIEW */}
+            </View>
         </View>
     )
 }
