@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import colors from '../../assets/colors/colors';
 import landing from '../../assets/app/landing/landing.jpg';
+import Login from '../Landing/Login/Login';
 import {
     StyleSheet,
     Text,
     View,
     ImageBackground,
-    TouchableOpacity
+    TouchableOpacity,
+    TextInput
 } from 'react-native';
 
-const Landing = () => {
+const Landing = (props) => {
+    const [open, setOpen] = useState(false);
     return (
         <ImageBackground source={landing} style={styles.landing}>
             <View style={styles.landingMain}>
                 <Text style={styles.landingText}>RoundTable Reviews</Text>
                 <Text style={styles.secondText}>Love it, hate it, gotta have it...Let the world know!</Text>
                 <View style={styles.btnContainer}>
-                    <TouchableOpacity style={styles.loginBtn}>
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => setOpen(!open)}>
                         <Text style={styles.btnText}>Login</Text>
                     </TouchableOpacity>
+                    {
+                        open
+                            ?
+                            <Login />
+                            :
+                            null
+                    }
                     <TouchableOpacity style={styles.signUpBtn}>
                         <Text style={styles.btnText}>Sign Up</Text>
                     </TouchableOpacity>
