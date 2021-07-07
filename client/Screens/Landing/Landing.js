@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import colors from '../../assets/colors/colors';
 import landing from '../../assets/app/landing/landing.jpg';
 import Login from '../Landing/Login/Login';
+import SignUp from '../Landing/SignUp/SignUp';
 import {
     StyleSheet,
     Text,
     View,
     ImageBackground,
-    TouchableOpacity,
-    TextInput
+    TouchableOpacity
 } from 'react-native';
 
 const Landing = (props) => {
@@ -18,20 +18,21 @@ const Landing = (props) => {
             <View style={styles.landingMain}>
                 <Text style={styles.landingText}>RoundTable Reviews</Text>
                 <Text style={styles.secondText}>Love it, hate it, gotta have it...Let the world know!</Text>
-                <View style={styles.btnContainer}>
-                    <TouchableOpacity style={styles.loginBtn} onPress={() => setOpen(!open)}>
-                        <Text style={styles.btnText}>Login</Text>
-                    </TouchableOpacity>
+                <View style={styles.authContainer}>
                     {
                         open
                             ?
-                            <Login />
+                            <>
+                                <SignUp />
+                                <Text style={styles.spanText}>Already a member? login <Text style={styles.hereBtn} onPress={() => setOpen(!open)}>here</Text></Text>
+                            </>
                             :
-                            null
+                            <>
+                                <Login />
+                                <Text style={styles.spanText}>Don't have an account? sign up <Text style={styles.hereBtn} onPress={() => setOpen(!open)}>here</Text></Text>
+                            </>
                     }
-                    <TouchableOpacity style={styles.signUpBtn}>
-                        <Text style={styles.btnText}>Sign Up</Text>
-                    </TouchableOpacity>
+
                 </View>
             </View>
         </ImageBackground>
@@ -58,24 +59,15 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         fontWeight: 'bold'
     },
-    btnContainer: {
+    authContainer: {
         width: '80%'
     },
-    loginBtn: {
-        backgroundColor: colors.green,
-        borderRadius: 5,
-        margin: 5,
-    },
-    signUpBtn: {
-        backgroundColor: colors.blue,
-        borderRadius: 5,
-        margin: 5
-    },
-    btnText: {
-        textAlign: 'center',
-        padding: 10,
+    spanText: {
         color: colors.white,
-        fontWeight: 'bold'
+        textAlign: 'center'
+    },
+    hereBtn: {
+      textDecorationLine: 'underline'
     }
 });
 

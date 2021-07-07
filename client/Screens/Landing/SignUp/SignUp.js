@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import colors from '../../../assets/colors/colors';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
-const Login = () => {
-    const [userInfo, setUserInfo] = useState('');
-    console.log(userInfo)
+const SignUp = () => {
+
     return (
         <View >
+            <TextInput
+                style={styles.input}
+                placeholder='Email'
+            />
             <TextInput
                 style={styles.input}
                 placeholder='Username'
@@ -14,8 +17,8 @@ const Login = () => {
                 style={styles.input}
                 placeholder='Password'
             />
-            <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.btnText}>Login</Text>
+            <TouchableOpacity style={styles.signUpBtn}>
+                <Text style={styles.btnText}>SignUp</Text>
             </TouchableOpacity>
         </View>
     )
@@ -29,10 +32,10 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
         borderRadius: 5
     },
-    loginBtn: {
-        backgroundColor: colors.green,
+    signUpBtn: {
+        backgroundColor: colors.blue,
         borderRadius: 5,
-        margin: 5,
+        margin: 5
     },
     btnText: {
         textAlign: 'center',
@@ -42,5 +45,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Login;
+export default SignUp;
 
