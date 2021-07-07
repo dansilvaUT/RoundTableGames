@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import colors from '../../../assets/colors/colors';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
 const Login = () => {
-    const [userInfo, setUserInfo] = useState('');
+    const [userInfo, setUserInfo] = useState({ username: '', password: '' });
+
     console.log(userInfo)
+
+    const handleInputChange = (name) => (value) => {
+        setUserInfo({ [name]: value });
+    };
+
     return (
         <View >
             <TextInput
