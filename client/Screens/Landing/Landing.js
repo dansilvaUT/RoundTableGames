@@ -7,11 +7,11 @@ import {
     StyleSheet,
     Text,
     View,
-    ImageBackground,
-    TouchableOpacity
+    ImageBackground
 } from 'react-native';
 
 const Landing = (props) => {
+    console.log(props)
     const [open, setOpen] = useState(false);
     return (
         <ImageBackground source={landing} style={styles.landing}>
@@ -28,7 +28,7 @@ const Landing = (props) => {
                             </>
                             :
                             <>
-                                <Login />
+                                <Login push={props.push} />
                                 <Text style={styles.spanText}>Don't have an account? sign up <Text style={styles.hereBtn} onPress={() => setOpen(!open)}>here</Text></Text>
                             </>
                     }
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     hereBtn: {
-      textDecorationLine: 'underline'
+        textDecorationLine: 'underline'
     }
 });
 

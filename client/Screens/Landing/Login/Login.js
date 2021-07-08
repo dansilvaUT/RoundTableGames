@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
 import colors from '../../../assets/colors/colors';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
-const Login = () => {
-    const [userInfo, setUserInfo] = useState('');
-    console.log(userInfo)
+import axios from 'axios';
+
+const Login = props => {
+    console.log('props', props)
+    const [userInfo, setUserInfo] = useState({ username: '', password: '' });
+
+    const login = (username, password) => {
+        axios.get("http://localhost:4444/api/login", { username, password })
+            .then(res => console.log(res.data))
+            .catch(err => console.log(`Error: ${err.message}`));
+    }
+
     return (
         <View >
             <TextInput
+                name='username'
                 style={styles.input}
                 placeholder='Username'
+                onChangeText={val => setUserInfo({ ...userInfo, username: val })}
+                defaultValue={userInfo.username}
             />
             <TextInput
+                name='password'
                 style={styles.input}
                 placeholder='Password'
+                secureTextEntry={true}
+                onChangeText={val => setUserInfo({ ...userInfo, password: val })}
+                defaultValue={userInfo.password}
             />
-            <TouchableOpacity style={styles.loginBtn}>
+            <TouchableOpacity style={styles.loginBtn} onPress={() => login(userInfo.username, userInfo.password)}>
                 <Text style={styles.btnText}>Login</Text>
             </TouchableOpacity>
         </View>
