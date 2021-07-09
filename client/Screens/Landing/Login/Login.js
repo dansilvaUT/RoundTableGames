@@ -8,9 +8,9 @@ const Login = props => {
     const [userInfo, setUserInfo] = useState({ username: '', password: '' });
 
     const login = (username, password) => {
-        axios.get("http://localhost:4444/api/login", { username, password })
+        axios.post('http://localhost:4444/api/login', { username, password })
             .then(res => console.log(res.data))
-            .catch(err => console.log(`Error: ${err.message}`));
+            .catch(err => console.log(`Error: ${err.response.request.response}`));
     }
 
     return (

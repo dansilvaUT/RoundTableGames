@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 
 const Landing = (props) => {
-    console.log(props)
     const [open, setOpen] = useState(false);
     return (
         <ImageBackground source={landing} style={styles.landing}>
