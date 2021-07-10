@@ -27,7 +27,7 @@ const Landing = (props) => {
                             </>
                             :
                             <>
-                                <Login push={props.push} />
+                                <Login navData={props.navigation} />
                                 <Text style={styles.spanText}>Don't have an account? sign up <Text style={styles.hereBtn} onPress={() => setOpen(!open)}>here</Text></Text>
                             </>
                     }
