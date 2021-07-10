@@ -9,14 +9,15 @@ const Login = props => {
 
     const login = (username, password) => {
         axios.post('http://localhost:4444/api/login', { username, password })
-            .then(res => console.log(res.data))
+            .then(res => props.navData.navigate('Dashboard'))
             .catch(err => console.log(`Error: ${err.response.request.response}`));
     }
-
+    //TDOD auto capitilize none;
     return (
         <View >
             <TextInput
                 name='username'
+                autoCapitalize={'none'}
                 style={styles.input}
                 placeholder='Username'
                 onChangeText={val => setUserInfo({ ...userInfo, username: val })}

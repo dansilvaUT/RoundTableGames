@@ -18,12 +18,14 @@ const SignUp = () => {
             <TextInput
                 style={styles.input}
                 placeholder='Email'
+                autoCapitalize={'none'}
                 onChangeText={val => setNewUser({ ...newUser, email: val })}
                 defaultValue={newUser.email}
             />
             <TextInput
                 style={styles.input}
                 placeholder='Username'
+                autoCapitalize={'none'}
                 onChangeText={val => setNewUser({ ...newUser, username: val })}
                 defaultValue={newUser.username}
             />
