@@ -22,7 +22,7 @@ const Landing = (props) => {
                         open
                             ?
                             <>
-                                <SignUp />
+                                <SignUp navData={props.navigation} />
                                 <Text style={styles.spanText}>Already a member? login <Text style={styles.hereBtn} onPress={() => setOpen(!open)}>here</Text></Text>
                             </>
                             :

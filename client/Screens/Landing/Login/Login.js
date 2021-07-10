@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { getUser } from '../../../redux/reducers/userReducer';
 import colors from '../../../assets/colors/colors';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
 import axios from 'axios';
 
 const Login = props => {
-    console.log('props', props)
+    const { getUser } = props;
     const [userInfo, setUserInfo] = useState({ username: '', password: '' });
 
     const login = (username, password) => {
         axios.post('http://localhost:4444/api/login', { username, password })
-            .then(res => props.navData.navigate('Dashboard'))
+            .then(res => {
+                props.navData.navigate('Dashboard');
+                getUser(res.data);
+            })
             .catch(err => console.log(`Error: ${err.response.request.response}`));
     }
-    //TDOD auto capitilize none;
+
     return (
         <View >
             <TextInput
@@ -57,7 +62,7 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontWeight: 'bold'
     }
-})
+});
 
-export default Login;
+export default connect(null, { getUser })(Login);
 

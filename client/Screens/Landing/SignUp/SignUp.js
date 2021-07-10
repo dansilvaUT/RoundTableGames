@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { getUser } from '../../../redux/reducers/userReducer';
 import colors from '../../../assets/colors/colors';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text } from 'react-native';
 
-const SignUp = () => {
-
+const SignUp = props => {
+    const { getUser } = props;
     const [newUser, setNewUser] = useState({ email: '', username: '', password: '' });
 
     const signUp = (email, username, password) => {
         axios.post('http://localhost:4444/api/register', { email, username, password })
-            .then(res => console.log(res.data))
+            .then(res => {
+                props.navData.navigate('Dashboard');
+                getUser(res.data);
+            })
             .catch(err => console.log(`Error: ${err.message}`));
     }
 
@@ -64,5 +69,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SignUp;
+export default connect(null, { getUser })(SignUp);
 
