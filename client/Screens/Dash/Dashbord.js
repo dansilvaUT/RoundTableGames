@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
     View,
     Text,
     StyleSheet
 } from 'react-native';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+    console.log('dash', props)
     return (
         <View style={styles.container}>
             <Text>Dashboard</Text>
@@ -20,5 +22,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     }
-})
-export default Dashboard;
+});
+
+const mapStateToProps = reduxState => {
+    return {
+        user: reduxState.userReducer.user
+    }
+}
+export default connect(mapStateToProps)(Dashboard);

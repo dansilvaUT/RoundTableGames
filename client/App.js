@@ -1,10 +1,13 @@
 import React from 'react';
-import Landing from './Screens/Landing/Landing';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import AppNavigator from './navigation/Navigation';
 
 export default function App() {
   return (
-    <AppNavigator />
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
   );
 }
 
