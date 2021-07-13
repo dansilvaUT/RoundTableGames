@@ -3,6 +3,7 @@ const express = require('express'),
     session = require('express-session'),
     massive = require('massive'),
     authCtlr = require('./controllers/auth/authController'),
+    gameCtlr = require('./controllers/games/gamesController'),
     { PORT, SESSION_SECRET, CONNECTION_STRING } = process.env,
     app = express();
 
@@ -31,8 +32,13 @@ app.post('/api/register', authCtlr.register);
 app.post('/api/login', authCtlr.login);
 app.get('/api/auth/me', authCtlr.getUser);
 app.get('/api/logout', authCtlr.logout);
+
 //User
 
+//Games
+app.post('/api/game/add', gameCtlr.addGame);
+app.get('/api/game/all', gameCtlr.getGames);
+app.get('/api/game/:game_id', gameCtlr.getGame);
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
