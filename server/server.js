@@ -4,6 +4,7 @@ const express = require('express'),
     massive = require('massive'),
     authCtlr = require('./controllers/auth/authController'),
     gameCtlr = require('./controllers/games/gamesController'),
+    tagCtlr = require('./controllers/tags/tagController'),
     { PORT, SESSION_SECRET, CONNECTION_STRING } = process.env,
     app = express();
 
@@ -39,6 +40,10 @@ app.get('/api/logout', authCtlr.logout);
 app.post('/api/game/add', gameCtlr.addGame);
 app.get('/api/game/all', gameCtlr.getGames);
 app.get('/api/game/:game_id', gameCtlr.getGame);
+
+//Tags
+app.post('/api/game/tags/add', tagCtlr.addTagsToGame);
+app.get('/api/game/tags/getAll', tagCtlr.getTags);
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

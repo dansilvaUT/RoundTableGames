@@ -22,6 +22,7 @@ module.exports = {
         res.status(200).send(game);
 
     },
+    
     addGame: async (req, res) => {
         const { game_name, game_image, game_description } = req.body;
         const db = req.app.get('db');
