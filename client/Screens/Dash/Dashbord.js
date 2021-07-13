@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import colors from '../../assets/colors/colors';
 import {
     View,
     Text,
@@ -20,7 +21,8 @@ const Dashboard = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: colors.background
     }
 });
 
